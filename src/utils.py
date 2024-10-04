@@ -4,7 +4,7 @@ import dill
 from sklearn.metrics import r2_score
 from src.exception import CustomException
 from src.logger import logging
-
+import pickle
 import yaml
 from sklearn.model_selection import GridSearchCV
 
@@ -32,7 +32,7 @@ def load_object(file_path):
         if os.path.exists(file_path):
             with open(file_path, 'rb') as file_obj:
                 logging.info(f'Loading object from {file_path}')
-                return dill.load(file_obj)
+                return pickle.load(file_obj)
         else:
             logging.info(f'No object found at {file_path}')
             return None
